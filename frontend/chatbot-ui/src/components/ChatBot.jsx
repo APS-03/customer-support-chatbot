@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./ChatBot.css"; // Optional: move styles here
+import "./ChatBot.css"; 
 
 function ChatBot() {
   const [input, setInput] = useState("");
