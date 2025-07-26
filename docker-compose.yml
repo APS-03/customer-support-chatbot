@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: chatbot-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: always
+    environment:
+      - VITE_API_URL=http://localhost:8000  # Replace with your backend URL if needed
+
+  backend:
+    build: ./backend
+    container_name: chatbot-backend
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CSV_DATA_DIR=/app/data  # If you use CSV datasets
+    volumes:
+      - ./backend/data:/app/data  # Mount dataset folder if needed
